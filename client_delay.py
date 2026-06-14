@@ -82,10 +82,10 @@ def compute_summary(sales, payments):
     return summary
 
 def fifo_match_customer(cs, cp):
-    cs = cs.sort_values("Date").reset_index(drop=True)
+    cs = cs.sort_values("Date").reset_index(drop=True)   # sort the values from the oldest to the newest 
     cp = cp.sort_values("PaymentDate").reset_index(drop=True)
 
-    queue = []
+    queue = []                      # list of non payed bills
     for _, row in cs.iterrows():
         amt = row["NetAmount"]
         if pd.isna(amt):

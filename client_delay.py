@@ -15,7 +15,10 @@ def clean_numeric(series):
     return pd.to_numeric(series.astype(str).str.replace(",", ".", regex=False), errors="coerce")
 
 def clean_dates(series):
-    return pd.to_datetime(series, errors="coerce", infer_datetime_format=True)
+    return pd.to_datetime(
+        series,
+        errors="coerce"
+    )
 
 def normalize_columns(df):
     df.columns = df.columns.str.replace(r"[-.]", "_", regex=True)
